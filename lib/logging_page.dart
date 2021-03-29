@@ -25,8 +25,16 @@ class BodyWidget extends StatefulWidget {
   State<StatefulWidget> createState() => BodyWidgetState();
 }
 
-class BodyWidgetState extends State<BodyWidget>  {
+class BodyWidgetState extends State<BodyWidget> with AutomaticKeepAliveClientMixin {
+  TextEditingController activityTxtController =TextEditingController();
+  TextEditingController activity2TxtController =TextEditingController();
+  TextEditingController activity3TxtController =TextEditingController();
+  TextEditingController mealTxtController =TextEditingController();
+  TextEditingController meal2TxtController =TextEditingController();
+  TextEditingController weightTxtController =TextEditingController();
+
   WidgetMarker selectedWidgetMarker = WidgetMarker.activity;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -46,7 +54,8 @@ class BodyWidgetState extends State<BodyWidget>  {
                 },
                 child: Text("Activity",
                 style: new TextStyle(
-                  fontSize: 15.0,
+                  fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
                   color: Colors.black),
               ),),
           FlatButton(
@@ -59,7 +68,8 @@ class BodyWidgetState extends State<BodyWidget>  {
             },
             child: Text("Meal",
               style: new TextStyle(
-                  fontSize: 15.0,
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
                   color: Colors.black),
             ),),
               FlatButton(
@@ -72,7 +82,8 @@ class BodyWidgetState extends State<BodyWidget>  {
                 },
                 child: Text("Weight",
                   style: new TextStyle(
-                      fontSize: 15.0,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
                       color: Colors.black),
                 ),),
             ],
@@ -83,7 +94,8 @@ class BodyWidgetState extends State<BodyWidget>  {
         SizedBox(
           height: 50,
         ),
-        Center(
+        Align(
+          alignment: Alignment.bottomCenter,
           child: OutlineButton(
             padding: EdgeInsets.symmetric(horizontal: 40),
             shape: RoundedRectangleBorder(
@@ -120,16 +132,16 @@ class BodyWidgetState extends State<BodyWidget>  {
   Widget getCustomContainer() {
     switch (selectedWidgetMarker) {
       case WidgetMarker.activity:
-        return getactivityWidget();
+        return getActivityWidget();
       case WidgetMarker.meal:
-        return getmealWidget();
+        return getMealWidget();
       case WidgetMarker.weight:
-        return getweightWidget();
+        return getWeightWidget();
     }
-    return getactivityWidget();
+    return getActivityWidget();
   }
 
-  Widget getactivityWidget() {
+  Widget getActivityWidget() {
     return Container(
       child: GestureDetector(
         onTap: () {
@@ -138,20 +150,17 @@ class BodyWidgetState extends State<BodyWidget>  {
         child: ListView(
           padding: EdgeInsets.all(15.0),
           shrinkWrap: true,
-          children: [
-            SizedBox(
-              height: 35,
-            ),
-            buildTextField("Activity", "", false),
-            buildTextField("Duration", "", false),
-            buildTextField("Calorie's burned", "", false),
+          children: <Widget>[
+            buildInputFields("Activity", activityTxtController),
+            buildInputFields("Duration", activity2TxtController),
+            buildInputFields("Calories", activity3TxtController),
           ],
         ),
       ),
     );
   }
 
-  Widget getmealWidget() {
+  Widget getMealWidget() {
     return Container(
       child: GestureDetector(
         onTap: () {
@@ -160,19 +169,16 @@ class BodyWidgetState extends State<BodyWidget>  {
         child: ListView(
           padding: EdgeInsets.all(15.0),
           shrinkWrap: true,
-          children: [
-            SizedBox(
-              height: 35,
-            ),
-            buildTextField("Meal Name", "", false),
-            buildTextField("Total Calories", "", false),
+          children: <Widget>[
+            buildInputFields("Number of Meals", mealTxtController),
+            buildInputFields("Calories", meal2TxtController),
           ],
         ),
       ),
     );
   }
 
-  Widget getweightWidget() {
+  Widget getWeightWidget() {
     return Container(
       child: GestureDetector(
         onTap: () {
@@ -181,35 +187,34 @@ class BodyWidgetState extends State<BodyWidget>  {
         child: ListView(
           padding: EdgeInsets.all(15.0),
           shrinkWrap: true,
-          children: [
-            SizedBox(
-              height: 35,
-            ),
-            buildTextField("Current Weight", "", false),
+          children: <Widget>[
+            buildInputFields("Current Weight", weightTxtController),
           ],
         ),
       ),
     );
   }
 
-  Widget buildTextField(
-      String labelText, String placeholder, bool isPasswordTextField) {
+  Widget buildInputFields(
+      String labelText, TextEditingController textController) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 35.0),
       child: TextField(
+        controller: textController,
         decoration: InputDecoration(
             contentPadding: EdgeInsets.only(bottom: 3),
             labelText: labelText,
             floatingLabelBehavior: FloatingLabelBehavior.always,
-            hintText: placeholder,
-            hintStyle: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
+            labelStyle: TextStyle(
+              fontSize: 20,
               color: Colors.black,
-            )
-        ),
+            ),
       ),
+    ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 

@@ -48,8 +48,6 @@ class _HomePageState extends State<HomePage> {
       _pageController.jumpToPage(selectedIndex);
     }
 
-    double _iconSize = 30;
-
     return new Scaffold(
       body: PageView(
         controller: _pageController,
@@ -57,39 +55,30 @@ class _HomePageState extends State<HomePage> {
         onPageChanged: _onPageChanged,
         physics: NeverScrollableScrollPhysics(),
       ),
-      // appBar: new AppBar(
-      //   title: new Text('Home'),
-      //   actions: <Widget>[
-      //     new FlatButton(
-      //       child: new Text('Logout',
-      //           style: new TextStyle(fontSize: 17.0, color: Colors.white)),
-      //       onPressed: _signOut,
-      //     ),
-      //   ],
-      // ),
 
       bottomNavigationBar: BottomNavigationBar(
         onTap: _onItemTapped,
+        type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
-              icon: Icon(Icons.home, color: _selectedIndex == 0? Color(0xFF21BFBD) : Colors.black, size: _iconSize),
-              title: Text('Home')
+              icon: Icon(Icons.home_outlined, color: _selectedIndex == 0? Color(0xFF21BFBD) : Colors.black, size: 30,),
+              title: Text('')
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.fitness_center, color: _selectedIndex == 1? Color(0xFF21BFBD) : Colors.black, size: _iconSize),
-              title: Text('Workout')
+              icon: Icon(Icons.fitness_center_outlined, color: _selectedIndex == 1? Color(0xFF21BFBD) : Colors.black, size: 30),
+              title: Text('')
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.add_box_outlined, color: _selectedIndex == 2? Color(0xFF21BFBD) : Colors.black, size: _iconSize),
-              title: Text('Logging')
+              icon: Icon(Icons.add_box_outlined, color: _selectedIndex == 2? Color(0xFF21BFBD) : Colors.black, size: 30),
+              title: Text('')
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.food_bank_outlined, color: _selectedIndex == 3? Color(0xFF21BFBD) : Colors.black, size: _iconSize),
-              title: Text('Meal')
+              icon: Icon(Icons.food_bank_outlined, color: _selectedIndex == 3? Color(0xFF21BFBD) : Colors.black, size: 30),
+              title: Text('')
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person, color: _selectedIndex == 4? Color(0xFF21BFBD) : Colors.black, size: _iconSize),
-              title: Text('Profile')
+              icon: Icon(Icons.person_outline, color: _selectedIndex == 4? Color(0xFF21BFBD) : Colors.black, size: 30),
+              title: Text('')
           ),
         ],
       ),

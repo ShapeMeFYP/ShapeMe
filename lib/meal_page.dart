@@ -58,9 +58,9 @@ class _MealPageState extends State<MealPage> {
                     height: MediaQuery.of(context).size.height - 300.0,
                       child: ListView(
                         children: [
-                          _buildFoodItem('build/flutter_assets/meal1.png', 'Salmon Bowl', '\496Kcal', '\26', '\26', '\200', '\224'),
+                          _buildFoodItem('build/flutter_assets/meal3.png', 'Salmon Bowl', '\496Kcal', '\26', '\26', '\200', '\224'),
                           _buildFoodItem('build/flutter_assets/meal2.png', 'Spring Bowl', '\525Kcal', '\30', '\30', '\200', '\124'),
-                          _buildFoodItem('build/flutter_assets/meal3.png', 'Avocado Bowl', '\450Kcal', '\24', '\28', '\200', '\130'),
+                          _buildFoodItem('build/flutter_assets/meal1.png', 'Avocado Bowl', '\450Kcal', '\24', '\28', '\200', '\130'),
                           _buildFoodItem('build/flutter_assets/meal4.png', 'Berry Bowl', '\480Kcal', '\15', '\24', '\200', '\120'),
                         ],
                       ),

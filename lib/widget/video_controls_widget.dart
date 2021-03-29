@@ -33,7 +33,7 @@ class VideoControlsWidget extends StatelessWidget {
             ),
             buildText(
               title: 'Reps',
-              value: '${exercise.noOfReps} times',
+              value: 'Repeat x3',
             ),
           ],
         ),
